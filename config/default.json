@@ -1,0 +1,49 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "tests": {
+    "environmentsAllowingSeedData": [
+      ""
+    ]
+  },
+  "algolia": {
+    "appId": "TRQ1UH8LRD",
+    "apiKey": "8f3125a5a67a6421629ed3e2c659867b"
+  },
+  "authentication": {
+    "token": {
+      "payload": [
+        "role"
+      ]
+    },
+    "secret": "7967b31861708be475a837c960c2610bffc03fba4aefd22dfdca237c421b5f819cb14fb84ae00d8e5e0a52f95b0022f5396b4941a90750b798fff41ae997d5595726dd54c39593580a1e472a2b97a460485a86f1b5c1bd01a4627222c6700da0c572e299defae7c9d82b404eed676626397ffe43ac9b562bdf3b333551700583ed70906907f6e683b12342c1b807de5d83c68f299be920cc30bea62bf6aedde455e92540536991f35d26d2295d91e6bb87bd66b201641376a1a337b85ce60b51221300a5e38101b7bd6229313e3ce4cb310d16dc9f5b52f66e5748f632e155ca7db92156250a71ac63f550b5bb8b42a1fb9a8aebf97d25da999cc236cdf792f2",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "5y"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "phone",
+      "passwordField": "password"
+    }
+  },
+  "mongodb": "mongodb://localhost:27017/snaky",
+  "mysql": "mysql://esnaqui_user:kinka123@api.esnaqui.com:3306/esnaqui"
+}

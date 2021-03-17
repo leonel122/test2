@@ -1,0 +1,664 @@
+{
+  "options": {
+    "ver": "1.0.0",
+    "inspectConflicts": false,
+    "semicolons": false,
+    "freeze": [],
+    "ts": false
+  },
+  "app": {
+    "environmentsAllowingSeedData": "",
+    "seedData": false,
+    "name": "snaky",
+    "description": "Project snaky",
+    "src": "src",
+    "packager": "yarn@>= 0.18.0",
+    "providers": [
+      "rest",
+      "socketio"
+    ]
+  },
+  "services": {
+    "users": {
+      "name": "users",
+      "nameSingular": "user",
+      "subFolder": "",
+      "fileName": "users",
+      "adapter": "sequelize",
+      "path": "/users",
+      "isAuthEntity": true,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "shops": {
+      "name": "shops",
+      "nameSingular": "shop",
+      "subFolder": "",
+      "fileName": "shops",
+      "adapter": "sequelize",
+      "path": "/shops",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "shopsTypes": {
+      "name": "shopsTypes",
+      "nameSingular": "shopsType",
+      "subFolder": "",
+      "fileName": "shops-types",
+      "adapter": "sequelize",
+      "path": "/shops-types",
+      "isAuthEntity": false,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "products": {
+      "name": "products",
+      "nameSingular": "product",
+      "subFolder": "",
+      "fileName": "products",
+      "adapter": "sequelize",
+      "path": "/products",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "categories": {
+      "name": "categories",
+      "nameSingular": "category",
+      "subFolder": "",
+      "fileName": "categories",
+      "adapter": "sequelize",
+      "path": "/categories",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "unitMeasure": {
+      "name": "unitMeasure",
+      "nameSingular": "unitMeasure",
+      "subFolder": "",
+      "fileName": "unit-measure",
+      "adapter": "sequelize",
+      "path": "/unit-measure",
+      "isAuthEntity": false,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "productsImages": {
+      "name": "productsImages",
+      "nameSingular": "productsImage",
+      "subFolder": "",
+      "fileName": "products-images",
+      "adapter": "sequelize",
+      "path": "/products-images",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "shoppingCart": {
+      "name": "shoppingCart",
+      "nameSingular": "shoppingCart",
+      "subFolder": "",
+      "fileName": "shopping-cart",
+      "adapter": "sequelize",
+      "path": "/shopping-cart",
+      "isAuthEntity": false,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "shoppingCartDetails": {
+      "name": "shoppingCartDetails",
+      "nameSingular": "shoppingCartDetail",
+      "subFolder": "",
+      "fileName": "shopping-cart-details",
+      "adapter": "sequelize",
+      "path": "/shopping-cart-details",
+      "isAuthEntity": false,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "orders": {
+      "name": "orders",
+      "nameSingular": "order",
+      "subFolder": "",
+      "fileName": "orders",
+      "adapter": "sequelize",
+      "path": "/orders",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "orderStatuses": {
+      "name": "orderStatuses",
+      "nameSingular": "orderStatus",
+      "subFolder": "",
+      "fileName": "order-statuses",
+      "adapter": "sequelize",
+      "path": "/order-statuses",
+      "isAuthEntity": false,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "orderDetails": {
+      "name": "orderDetails",
+      "nameSingular": "orderDetail",
+      "subFolder": "",
+      "fileName": "order-details",
+      "adapter": "sequelize",
+      "path": "/order-details",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "shopsShippingCost": {
+      "name": "shopsShippingCost",
+      "nameSingular": "shopsShippingCost",
+      "subFolder": "",
+      "fileName": "shops-shipping-cost",
+      "adapter": "sequelize",
+      "path": "/shops-shipping-cost",
+      "isAuthEntity": false,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "currentUser": {
+      "name": "currentUser",
+      "nameSingular": "currentUser",
+      "subFolder": "",
+      "fileName": "current-user",
+      "adapter": "generic",
+      "path": "/current-user",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "localities": {
+      "name": "localities",
+      "nameSingular": "locality",
+      "subFolder": "",
+      "fileName": "localities",
+      "adapter": "sequelize",
+      "path": "/localities",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "addresses": {
+      "name": "addresses",
+      "nameSingular": "address",
+      "subFolder": "",
+      "fileName": "addresses",
+      "adapter": "sequelize",
+      "path": "/addresses",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "shippingCost": {
+      "name": "shippingCost",
+      "nameSingular": "shippingCost",
+      "subFolder": "",
+      "fileName": "shipping-cost",
+      "adapter": "sequelize",
+      "path": "/shipping-cost",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "notifications": {
+      "name": "notifications",
+      "nameSingular": "notification",
+      "subFolder": "",
+      "fileName": "notifications",
+      "adapter": "generic",
+      "path": "/notifications",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "shopRegisterContact": {
+      "name": "shopRegisterContact",
+      "nameSingular": "shopRegisterContact",
+      "subFolder": "",
+      "fileName": "shop-register-contact",
+      "adapter": "sequelize",
+      "path": "/shop-register-contact",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "cms": {
+      "name": "cms",
+      "nameSingular": "cm",
+      "subFolder": "",
+      "fileName": "cms",
+      "adapter": "sequelize",
+      "path": "/cms",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": false
+    },
+    "banners": {
+      "name": "banners",
+      "nameSingular": "banner",
+      "subFolder": "",
+      "fileName": "banners",
+      "adapter": "sequelize",
+      "path": "/banners",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "schedule": {
+      "name": "schedule",
+      "nameSingular": "schedule",
+      "subFolder": "",
+      "fileName": "schedule",
+      "adapter": "sequelize",
+      "path": "/schedule",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "jobScheduleShops": {
+      "name": "jobScheduleShops",
+      "nameSingular": "jobScheduleShop",
+      "subFolder": "",
+      "fileName": "job-schedule-shops",
+      "adapter": "generic",
+      "path": "/job-schedule-shops",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "recoveryPassword": {
+      "name": "recoveryPassword",
+      "nameSingular": "recoveryPassword",
+      "subFolder": "",
+      "fileName": "recovery-password",
+      "adapter": "generic",
+      "path": "/recovery-password",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": false
+    },
+    "orderHistory": {
+      "name": "orderHistory",
+      "nameSingular": "orderHistory",
+      "subFolder": "",
+      "fileName": "order-history",
+      "adapter": "sequelize",
+      "path": "/order-history",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": false
+    },
+    "featuredProducts": {
+      "name": "featuredProducts",
+      "nameSingular": "featuredProduct",
+      "subFolder": "",
+      "fileName": "featured-products",
+      "adapter": "sequelize",
+      "path": "/featured-products",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "usersDevicesTokens": {
+      "name": "usersDevicesTokens",
+      "nameSingular": "usersDevicesToken",
+      "subFolder": "",
+      "fileName": "users-devices-tokens",
+      "adapter": "sequelize",
+      "path": "/users-devices-tokens",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    }
+  },
+  "hooks": {
+    "proccess-users-before-create": {
+      "fileName": "proccess-users-before-create",
+      "camelName": "proccessUsersBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "users"
+    },
+    "proccess-shop-before-create": {
+      "fileName": "proccess-shop-before-create",
+      "camelName": "proccessShopBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "restrict-to-owner": {
+      "fileName": "restrict-to-owner",
+      "camelName": "restrictToOwner",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "proccess-products": {
+      "fileName": "proccess-products",
+      "camelName": "proccessProducts",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "products"
+    },
+    "proccess-category": {
+      "fileName": "proccess-category",
+      "camelName": "proccessCategory",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "categories"
+    },
+    "proccess-product-before-create": {
+      "fileName": "proccess-product-before-create",
+      "camelName": "proccessProductBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "products"
+    },
+    "push-algolia-product": {
+      "fileName": "push-algolia-product",
+      "camelName": "pushAlgoliaProduct",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "products"
+    },
+    "process-shopping-cart-before-create": {
+      "fileName": "process-shopping-cart-before-create",
+      "camelName": "processShoppingCartBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shoppingCart"
+    },
+    "process-shopping-cart-after-create": {
+      "fileName": "process-shopping-cart-after-create",
+      "camelName": "processShoppingCartAfterCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shoppingCart"
+    },
+    "process-shopping-cart-details-before-create": {
+      "fileName": "process-shopping-cart-details-before-create",
+      "camelName": "processShoppingCartDetailsBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shoppingCartDetails"
+    },
+    "process-shops-shipping-cost-before-create": {
+      "fileName": "process-shops-shipping-cost-before-create",
+      "camelName": "processShopsShippingCostBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shopsShippingCost"
+    },
+    "validate-of-fields": {
+      "fileName": "validate-of-fields",
+      "camelName": "validateOfFields",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "process-orders-before-create": {
+      "fileName": "process-orders-before-create",
+      "camelName": "processOrdersBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "orders"
+    },
+    "process-order-before-create": {
+      "fileName": "process-order-before-create",
+      "camelName": "processOrderBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "orders"
+    },
+    "abilities": {
+      "fileName": "abilities",
+      "camelName": "abilities",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "authenticate": {
+      "fileName": "authenticate",
+      "camelName": "authenticate",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "process-orders-after-patch": {
+      "fileName": "process-orders-after-patch",
+      "camelName": "processOrdersAfterPatch",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "orders"
+    },
+    "process-orders-before-patch": {
+      "fileName": "process-orders-before-patch",
+      "camelName": "processOrdersBeforePatch",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "orders"
+    },
+    "find-current-user": {
+      "fileName": "find-current-user",
+      "camelName": "findCurrentUser",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "currentUser"
+    },
+    "filters-shops": {
+      "fileName": "filters-shops",
+      "camelName": "filtersShops",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "register-shipping-cost": {
+      "fileName": "register-shipping-cost",
+      "camelName": "registerShippingCost",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shippingCost"
+    },
+    "register-address": {
+      "fileName": "register-address",
+      "camelName": "registerAddress",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "addresses"
+    },
+    "patch-user-addresses": {
+      "fileName": "patch-user-addresses",
+      "camelName": "patchUserAddresses",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "addresses"
+    },
+    "delete-shopping-cart-detail": {
+      "fileName": "delete-shopping-cart-detail",
+      "camelName": "deleteShoppingCartDetail",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shoppingCartDetails"
+    },
+    "softdelete": {
+      "fileName": "softdelete",
+      "camelName": "softdelete",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "update-products": {
+      "fileName": "update-products",
+      "camelName": "updateProducts",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "products"
+    },
+    "send-sns": {
+      "fileName": "send-sns",
+      "camelName": "sendSns",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "notifications"
+    },
+    "proccess-order-after-patch": {
+      "fileName": "proccess-order-after-patch",
+      "camelName": "proccessOrderAfterPatch",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "orders"
+    },
+    "register-shop-contact": {
+      "fileName": "register-shop-contact",
+      "camelName": "registerShopContact",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shopRegisterContact"
+    },
+    "search-orders": {
+      "fileName": "search-orders",
+      "camelName": "searchOrders",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "restrict-activate-shop": {
+      "fileName": "restrict-activate-shop",
+      "camelName": "restrictActivateShop",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "filter-owner-s-hop": {
+      "fileName": "filter-owner-s-hop",
+      "camelName": "filterOwnerSHop",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "search-shops": {
+      "fileName": "search-shops",
+      "camelName": "searchShops",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "search-users": {
+      "fileName": "search-users",
+      "camelName": "searchUsers",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "users"
+    },
+    "search": {
+      "fileName": "search",
+      "camelName": "search",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "products"
+    },
+    "open-shops": {
+      "fileName": "open-shops",
+      "camelName": "openShops",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "jobScheduleShops"
+    },
+    "create-schedule": {
+      "fileName": "create-schedule",
+      "camelName": "createSchedule",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "create-shipping-cost": {
+      "fileName": "create-shipping-cost",
+      "camelName": "createShippingCost",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "update-schedule": {
+      "fileName": "update-schedule",
+      "camelName": "updateSchedule",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "schedule"
+    },
+    "recovery-password-before-create": {
+      "fileName": "recovery-password-before-create",
+      "camelName": "recoveryPasswordBeforeCreate",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "recoveryPassword"
+    },
+    "recovery-password-patch": {
+      "fileName": "recovery-password-patch",
+      "camelName": "recoveryPasswordPatch",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "recoveryPassword"
+    },
+    "order-history": {
+      "fileName": "order-history",
+      "camelName": "orderHistory",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "update-algolia": {
+      "fileName": "update-algolia",
+      "camelName": "updateAlgolia",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "shops"
+    },
+    "send-push-notifications": {
+      "fileName": "send-push-notifications",
+      "camelName": "sendPushNotifications",
+      "ifMulti": "n",
+      "multiServices": [],
+      "singleService": "notifications"
+    }
+  },
+  "authentication": {
+    "strategies": [
+      "local"
+    ],
+    "entity": "users"
+  },
+  "connections": {
+    "mongoose": {
+      "database": "mongodb",
+      "adapter": "mongoose",
+      "connectionString": "mongodb://localhost:27017/snaky"
+    },
+    "sequelize": {
+      "database": "mysql",
+      "adapter": "sequelize",
+      "connectionString": "mysql://esnaqui_user:kinka123@api.esnaqui.com:3306/esnaqui"
+    }
+  }
+}

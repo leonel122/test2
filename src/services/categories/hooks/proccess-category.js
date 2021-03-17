@@ -1,0 +1,43 @@
+
+// Use this hook to manipulate incoming or outgoing data.
+// For more information on hooks see: http://docs.feathersjs.com/api/hooks.html
+
+const { checkContext, getItems, replaceItems } = require('feathers-hooks-common')
+const {NotAcceptable, NotFound} = require('@feathersjs/errors');
+// eslint-disable-next-line no-unused-vars
+module.exports = function (options = {}) {
+
+  // Return the actual hook.
+  return async (context) => {
+    // Throw if the hook is being called from an unexpected location.
+    checkContext(context, null, ['find', 'get', 'create', 'update', 'patch', 'remove'])
+
+    // Get the authenticated user.
+    // eslint-disable-next-line no-unused-vars
+    const { user } = context.params
+    // Get the record(s) from context.data (before), context.result.data or context.result (after).
+    // getItems always returns an array to simplify your processing.
+    const records = getItems(context)
+
+    const category = await context.app.service('shops')
+      .find({query:{id:records.shop_id}, paginate:false})
+      .then(it =>it);
+
+    if(!category)
+      throw new NotFound('No se encontro la categoria padre');
+
+    if(!records.name || records.parent_id < 0)
+      throw new NotAcceptable('Debes enviar la categoria padre y el nombre de la categoria');
+    
+    // Place the modified records back in the context.
+    replaceItems(context, records)
+    // Best practice: hooks should always return the context.
+    return context
+  }
+}
+
+// Throw on unrecoverable error.
+// eslint-disable-next-line no-unused-vars
+function error(msg) {
+  throw new Error(msg)
+}
