@@ -60,11 +60,6 @@ module.exports = function (options = {}) {
       .getModel()
       .findOne({ where: { id: product.shop_id, deletedAt: -1 } });
 
-    if (records.quantity < 1)
-      throw new NotAcceptable(
-        `La cantidad debe ser mayor a uno producto ${product.name}.`
-      );
-
     // if (product.quantity <= 0)
     //   throw new NotAcceptable(
     //     "No hay stock en para este producto por el momento."
@@ -88,6 +83,11 @@ module.exports = function (options = {}) {
           paginate: false,
         })
         .then((it) => it[0]);
+
+      if (records.quantity < 1)
+        await context.app
+          .service("shopping-cart-details")
+          .remove(shopping_cart_details.id);
 
       shoppingCarDetailsSwicth = false;
       if (shopping_cart_details) {

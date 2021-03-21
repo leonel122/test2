@@ -1,11 +1,10 @@
-
 // Hooks for service `shoppingCart`. (Can be re-generated.)
-const commonHooks = require('feathers-hooks-common')
-const { authenticate } = require('@feathersjs/authentication').hooks
+const commonHooks = require("feathers-hooks-common");
+const { authenticate } = require("@feathersjs/authentication").hooks;
 // eslint-disable-next-line no-unused-vars
-const processShoppingCartAfterCreate = require('./hooks/process-shopping-cart-after-create')
+const processShoppingCartAfterCreate = require("./hooks/process-shopping-cart-after-create");
 // eslint-disable-next-line no-unused-vars
-const processShoppingCartBeforeCreate = require('./hooks/process-shopping-cart-before-create')
+const processShoppingCartBeforeCreate = require("./hooks/process-shopping-cart-before-create");
 // !code: imports
 const removeSodtDelete = require("../../hooks/softdelete");
 // !end
@@ -49,7 +48,7 @@ const ShoppingCartJoin = {
 
       const { user, address_id } = context.params;
 
-      let deliverysFree = user ? user.delivery_free : 0
+      let deliverysFree = user ? user.delivery_free : 0;
 
       for (
         let index = 0;
@@ -85,11 +84,14 @@ const ShoppingCartJoin = {
             })
             .then((it) => it);
 
-          records.shopping_cart_details[index].shipping_cost =  deliverysFree >= 1 ? {price : 0} :  shippingCost
-            ? shippingCost
-            : null;
+          records.shopping_cart_details[index].shipping_cost =
+            deliverysFree >= 1
+              ? { price: 0 }
+              : shippingCost
+              ? shippingCost
+              : null;
 
-          deliverysFree ? deliverysFree -- : null
+          deliverysFree ? deliverysFree-- : null;
         }
       }
       records.address = userAddress ? userAddress : null;
@@ -118,7 +120,7 @@ let moduleExports = {
 
   after: {
     // !code: after
-    all: [softDelete2()],
+    all: [fastJoin(ShoppingCartJoin)],
     find: [fastJoin(ShoppingCartJoin)],
     get: [],
     create: [processShoppingCartAfterCreate()],
@@ -136,14 +138,14 @@ let moduleExports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
     // !end
   },
   // !code: moduleExports // !end
-}
+};
 
 // !code: exports // !end
-module.exports = moduleExports
+module.exports = moduleExports;
 
 // !code: funcs // !end
 // !code: end // !end
