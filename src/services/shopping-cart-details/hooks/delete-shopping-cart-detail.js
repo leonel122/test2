@@ -28,24 +28,32 @@ module.exports = function (options = {}) {
     // getItems always returns an array to simplify your processing.
     const records = getItems(context);
 
+    const shoppingCart = await context.app
+      .service("shopping-cart")
+      .getModel()
+      .findOne({
+        where: {
+          id: context.params.query.token,
+          deletedAt: -1,
+        },
+      });
+
+    if (!shoppingCart) throw new NotFound("Carro de compras no encontrado.");
+
     const shoppingCartDetail = await context.app
       .service("shopping-cart-details")
       .getModel()
-      .findOne({ where: { id: product_id, deletedAt: -1 } })
+      .findOne({
+        where: {
+          id: context.params.query.product_id,
+          deletedAt: -1,
+          shopping_cart_id: shoppingCart.id,
+        },
+      })
       .then((it) => it);
 
     if (shoppingCartDetail) {
-      const shoppingCart = await context.app
-        .service("shopping-cart")
-        .getModel()
-        .findOne({
-          where: {
-            id: records.token,
-            deletedAt: -1,
-          },
-        });
-
-      if (!shoppingCart) throw new NotFound("Carro de compras no encontrado.");
+      context.id = shoppingCartDetail.id;
     } else {
       throw new NotFound("Carro de compras no encontrado.");
     }
