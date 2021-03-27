@@ -31,7 +31,7 @@ module.exports = function (options = {}) {
     const shoppingCartDetail = await context.app
       .service("shopping-cart-details")
       .getModel()
-      .findOne({ where: { id: context.id, deletedAt: -1 } })
+      .findOne({ where: { id: product_id, deletedAt: -1 } })
       .then((it) => it);
 
     if (shoppingCartDetail) {
@@ -40,8 +40,7 @@ module.exports = function (options = {}) {
         .getModel()
         .findOne({
           where: {
-            id: shoppingCartDetail.shopping_cart_id,
-            user_id: user.id,
+            id: records.token,
             deletedAt: -1,
           },
         });

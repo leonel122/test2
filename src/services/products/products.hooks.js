@@ -67,8 +67,8 @@ let moduleExports = {
   after: {
     // !code: after
     all: [softDelete2()],
-    find: [fastJoin(ProductsJoin)],
-    get: [fastJoin(ProductsJoin)],
+    find: [],
+    get: [],
     create: [fastJoin(ProductsJoin), pushAlgoliaProduct()],
     update: [],
     patch: [fastJoin(ProductsJoin), pushAlgoliaProduct()],

@@ -24,33 +24,34 @@ module.exports = function (options = {}) {
     const [product, shoppingCart] = await Promise.all([
       context.app
         .service("products")
-        .find({ query: { id: records.product_id }, paginate: false })
-        .then((it) => it[0]),
+        .getModel()
+        .findOne({ where: { id: records.product_id } })
+        .then((it) => it),
       context.app
         .service("shopping-cart")
-        .find({
-          query: {
-            id: records.shopping_cart_id,
+        .getModel()
+        .findOne({
+          where: {
+            token: records.token,
             user_id: user.id,
             status: "Active",
           },
-          paginate: false,
         })
-        .then((it) => it[0]),
+        .then((it) => it),
     ]);
 
     if (!shoppingCart) error(NotFound, "No se encontro el carro de compras.");
 
     const shoppingCartDetail = await context.app
       .service("shopping-cart-details")
-      .find({
-        query: {
+      .getModel()
+      .findOne({
+        where: {
           product_id: records.product_id,
           shopping_cart_id: shoppingCart.id,
         },
-        paginate: false,
       })
-      .then((it) => it[0]);
+      .then((it) => it);
 
     if (!shoppingCart)
       throw new NotAcceptable(

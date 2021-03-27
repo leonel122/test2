@@ -25,6 +25,7 @@ async function defineAbilitiesFor(user, context) {
     "recovery-password",
     "users-devices-tokens",
     "shopping-cart",
+    "shopping-cart-details",
   ]);
   can("read", [
     "categories",
