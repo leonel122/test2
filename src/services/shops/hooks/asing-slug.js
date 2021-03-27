@@ -29,9 +29,9 @@ module.exports = function (options = {}) {
     const records = getItems(context);
 
     if (records.name) {
-      const slugName = slugify(records.name.toLowerCase());
+      const slugName = slugify(records.name.toLowerCase(), "");
 
-      const slug = `${slugName}-${records.id}`;
+      const slug = `${slugName}`;
 
       await context.app
         .service(`shops`)
