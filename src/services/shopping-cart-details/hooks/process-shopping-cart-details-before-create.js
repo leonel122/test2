@@ -66,7 +66,7 @@ module.exports = function (options = {}) {
         .service("shopping-cart-details")
         .patch(shoppingCartDetail.id, { quantity: records.quantity });
 
-      if (product) context.result = product;
+      if (product) context.result = shoppingCart;
     }
 
     // Place the modified records back in the context.
