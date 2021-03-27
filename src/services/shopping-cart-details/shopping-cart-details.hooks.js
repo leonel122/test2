@@ -1,11 +1,10 @@
-
 // Hooks for service `shoppingCartDetails`. (Can be re-generated.)
-const commonHooks = require('feathers-hooks-common')
-const { authenticate } = require('@feathersjs/authentication').hooks
+const commonHooks = require("feathers-hooks-common");
+const { authenticate } = require("@feathersjs/authentication").hooks;
 // eslint-disable-next-line no-unused-vars
-const deleteShoppingCartDetail = require('./hooks/delete-shopping-cart-detail')
+const deleteShoppingCartDetail = require("./hooks/delete-shopping-cart-detail");
 // eslint-disable-next-line no-unused-vars
-const processShoppingCartDetailsBeforeCreate = require('./hooks/process-shopping-cart-details-before-create')
+const processShoppingCartDetailsBeforeCreate = require("./hooks/process-shopping-cart-details-before-create");
 // !code: imports // !end
 
 // !code: used
@@ -47,7 +46,7 @@ let moduleExports = {
     // Your hooks should include:
     //   all   : authenticate('jwt')
     // !code: before
-    all: [authenticate("jwt")],
+    all: [],
     find: [],
     get: [],
     create: [
@@ -79,14 +78,14 @@ let moduleExports = {
     create: [],
     update: [],
     patch: [],
-    remove: []
+    remove: [],
     // !end
   },
   // !code: moduleExports // !end
-}
+};
 
 // !code: exports // !end
-module.exports = moduleExports
+module.exports = moduleExports;
 
 // !code: funcs // !end
 // !code: end // !end

@@ -46,6 +46,7 @@ async function defineAbilitiesFor(user, context) {
   //     'orders'
   //   ], { shop_id: user.shop.id })
   // }
+  can("remove", ["shopping-cart-details"]);
 
   //los usuarios logeados (poner servicios debajo)
   can("create", ["current-user", "shopping-cart"]);
