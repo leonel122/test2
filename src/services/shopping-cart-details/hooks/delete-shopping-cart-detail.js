@@ -28,22 +28,6 @@ module.exports = function (options = {}) {
     // getItems always returns an array to simplify your processing.
     const records = getItems(context);
 
-    console.log(context, "CONTE");
-
-    throw "";
-
-    const shoppingCart = await context.app
-      .service("shopping-cart")
-      .getModel()
-      .findOne({
-        where: {
-          id: context.params.query.token,
-          deletedAt: -1,
-        },
-      });
-
-    if (!shoppingCart) throw new NotFound("Carro de compras no encontrado.");
-
     // Place the modified records back in the context.
     replaceItems(context, records);
     // Best practice: hooks should always return the context.
