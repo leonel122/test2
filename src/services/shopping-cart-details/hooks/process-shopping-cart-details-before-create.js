@@ -33,7 +33,6 @@ module.exports = function (options = {}) {
         .findOne({
           where: {
             token: records.token,
-            user_id: user.id,
             status: "Active",
           },
         })
