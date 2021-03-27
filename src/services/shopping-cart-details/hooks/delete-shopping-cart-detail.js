@@ -28,6 +28,9 @@ module.exports = function (options = {}) {
     // getItems always returns an array to simplify your processing.
     const records = getItems(context);
 
+    console.log(context.params, "paramsssssssssssssss");
+
+    throw "";
     const shoppingCart = await context.app
       .service("shopping-cart")
       .getModel()
