@@ -60,6 +60,9 @@ let moduleExports = merge(
     logo: {
       type: DataTypes.TEXT,
     },
+    cover: {
+      type: DataTypes.TEXT,
+    },
     phone: {
       type: DataTypes.STRING,
     },
