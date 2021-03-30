@@ -33,20 +33,21 @@ const {
 const ShoppingCartJoin = {
   joins: {
     join: () => async (records, context) => {
+      const { user, address_id, shop_id } = context.params;
+
       [records.shopping_cart_details] = await Promise.all([
         context.app
           .service("shopping-cart-details")
           .find({
             query: {
               shopping_cart_id: records.id,
+              shop_id: shop_id,
             },
             paginate: false,
           })
           .then((it) => it),
       ]);
       let userAddress = {};
-
-      const { user, address_id } = context.params;
 
       let deliverysFree = user ? user.delivery_free : 0;
 
@@ -55,44 +56,45 @@ const ShoppingCartJoin = {
         index < records.shopping_cart_details.length;
         index++
       ) {
-        let shippingCost = null;
+        let shippingCost = { price: 0 };
 
-        let params = {};
-        if (user && address_id) {
-          params = { user_id: user.id, id: address_id };
-        } else if (user) {
-          params = { user_id: user.id, main: "true" };
-        }
+        if (user) {
+          let params = {};
+          if (address_id) {
+            params = { user_id: user.id, id: address_id };
+          } else {
+            params = { user_id: user.id, main: "true" };
+          }
 
-        userAddress = await context.app
-          .service("addresses")
-          .find({
-            query: { ...params },
-            paginate: false,
-          })
-          .then((it) => it[0]);
-
-        if (userAddress) {
-          shippingCost = await context.app
-            .service("shipping-cost")
-            .getModel()
-            .findOne({
-              where: {
-                locality_id: userAddress.locality_id,
-                shop_id: records.shopping_cart_details[index].shop_id,
-              },
+          userAddress = await context.app
+            .service("addresses")
+            .find({
+              query: { ...params },
+              paginate: false,
             })
-            .then((it) => it);
+            .then((it) => it[0]);
 
-          records.shopping_cart_details[index].shipping_cost =
-            deliverysFree >= 1
-              ? { price: 0 }
-              : shippingCost
-              ? shippingCost
-              : null;
-
-          deliverysFree ? deliverysFree-- : null;
+          if (userAddress) {
+            shippingCost = await context.app
+              .service("shipping-cost")
+              .getModel()
+              .findOne({
+                where: {
+                  locality_id: userAddress.locality_id,
+                  shop_id: records.shopping_cart_details[index].shop_id,
+                },
+              })
+              .then((it) => it);
+          }
         }
+        records.shopping_cart_details[index].shipping_cost =
+          deliverysFree >= 1
+            ? { price: 0 }
+            : shippingCost
+            ? shippingCost
+            : null;
+
+        deliverysFree ? deliverysFree-- : null;
       }
       records.address = userAddress ? userAddress : null;
     },
@@ -106,8 +108,8 @@ let moduleExports = {
     //   all   : authenticate('jwt')
     // !code: before
     all: [],
-    find: [paramsFromClient("address_id"), softDelete2()],
-    get: [paramsFromClient("address_id"), softDelete2()],
+    find: [paramsFromClient("address_id", "shop_id"), softDelete2()],
+    get: [paramsFromClient("address_id", "shop_id"), softDelete2()],
     create: [
       iff(isProvider("external"), processShoppingCartBeforeCreate()),
       softDelete2(),
