@@ -38,6 +38,7 @@ async function defineAbilitiesFor(user, context) {
     "featured-products",
     "shopping-cart",
     "shopping-cart-details",
+    "shipping-cost",
   ]);
   /* if (!user) throw new Forbidden('Debes autenticarte.') */
 
