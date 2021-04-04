@@ -41,6 +41,7 @@ let schema = {
     long: { type: "string", maxLength: 255 },
     lat: { type: "string", maxLength: 255 },
     logo: { type: "string" },
+    cover: { type: "string" },
     phone: { type: "string", maxLength: 255 },
     link_facebook: { type: "string" },
     link_instagram: { type: "string" },
