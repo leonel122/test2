@@ -34,9 +34,9 @@ module.exports = function (options = {}) {
         .getModel()
         .update(
           {
-            views: records.views + 1,
+            views: parseInt(records[0].views) + 1,
           },
-          { where: { id: records.id } }
+          { where: { id: records[0].id } }
         );
     }
 
