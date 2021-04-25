@@ -90,6 +90,9 @@ let moduleExports = merge(
     priority: {
       type: DataTypes.INTEGER,
     },
+    views: {
+      type: DataTypes.INTEGER,
+    },
     deletedAt: {
       type: DataTypes.DATE,
     },

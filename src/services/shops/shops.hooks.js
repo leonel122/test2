@@ -17,6 +17,7 @@ const updateAlgolia = require("./hooks/update-algolia");
 // !code: imports
 const moment = require("moment");
 const asingSlug = require("./hooks/asing-slug");
+const countViews = require("./hooks/count-views");
 // !end
 
 // !code: used
@@ -109,7 +110,7 @@ let moduleExports = {
     // !code: after
     all: [softDelete2()],
     find: [fastJoin(JoinRequests)],
-    get: [fastJoin(JoinRequests)],
+    get: [fastJoin(JoinRequests), iff(isProvider("external"), countViews())],
     create: [createSchedule(), createShippingCost(), asingSlug()],
     update: [],
     patch: [asingSlug(), updateAlgolia()],

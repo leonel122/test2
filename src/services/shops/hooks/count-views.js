@@ -6,7 +6,7 @@ const {
   getItems,
   replaceItems,
 } = require("feathers-hooks-common");
-
+const slugify = require("slugify");
 // eslint-disable-next-line no-unused-vars
 module.exports = function (options = {}) {
   // Return the actual hook.
@@ -27,34 +27,16 @@ module.exports = function (options = {}) {
     // Get the record(s) from context.data (before), context.result.data or context.result (after).
     // getItems always returns an array to simplify your processing.
     const records = getItems(context);
-    if (user) {
-      if (context.params.query && context.params.query.search) {
-        const search = context.params.query.search;
-        delete context.params.query.search;
 
-        const sequelize = context.app.get("sequelizeClient");
-
-        const query = `SELECT
-        S.id AS id 
-      FROM
-        shops AS S
-        INNER JOIN users ON S.user_id = users.id 
-      WHERE
-        S.name LIKE "%${search}%"
-        OR S.phone LIKE "%${search}%"
-        OR users.first_name LIKE "%${search}%"
-        OR users.last_name LIKE "%${search}%"
-        AND S.deletedAt = "1969-12-31 23:59:59"`;
-
-        const shopsIds = await sequelize
-          .query(query, { type: sequelize.QueryTypes.SELECT })
-          .then((it) => it.map((it) => it.id));
-
-        context.params.query = {
-          id: { $in: shopsIds },
-        };
-      }
-    }
+    await context.app
+      .service("shops")
+      .getModel()
+      .update(
+        {
+          views: records.views + 1,
+        },
+        { where: { id: records.id } }
+      );
 
     // Place the modified records back in the context.
     replaceItems(context, records);
@@ -63,7 +45,7 @@ module.exports = function (options = {}) {
   };
 };
 
-// Throw to reject the service call, or on an unrecoverable error.
+// Throw on unrecoverable error.
 // eslint-disable-next-line no-unused-vars
 function error(msg) {
   throw new Error(msg);

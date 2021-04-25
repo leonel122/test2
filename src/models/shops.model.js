@@ -1,11 +1,10 @@
-
 // shops-model.js - A Sequelize model. (Can be re-generated.)
 //
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
-const merge = require('lodash.merge')
+const merge = require("lodash.merge");
 // !<DEFAULT> code: sequelize_schema
-const sequelizeSchema = require('../services/shops/shops.sequelize')
+const sequelizeSchema = require("../services/shops/shops.sequelize");
 // !end
 // !code: sequelize_imports
 const usersModel = require("./users.model");
@@ -14,10 +13,11 @@ const categoriesModel = require("./categories.model");
 // !code: sequelize_init // !end
 
 let moduleExports = function (app) {
-  let sequelizeClient = app.get('sequelizeClient')
+  let sequelizeClient = app.get("sequelizeClient");
   // !code: sequelize_func_init // !end
 
-  const shops = sequelizeClient.define('shops',
+  const shops = sequelizeClient.define(
+    "shops",
     // !<DEFAULT> code: sequelize_model
     sequelizeSchema,
     // !end
@@ -26,14 +26,14 @@ let moduleExports = function (app) {
       {
         hooks: {
           beforeCount(options) {
-            options.raw = true
+            options.raw = true;
           },
         },
-      },
+      }
       // !end
       // !code: sequelize_define // !end
     )
-  )
+  );
 
   // eslint-disable-next-line no-unused-vars
   shops.associate = function (models) {
@@ -50,15 +50,15 @@ let moduleExports = function (app) {
       onDelete: "RESTRICT",
     });
     // !end
-  }
+  };
 
   // !code: sequelize_func_return // !end
-  return shops
-}
+  return shops;
+};
 // !code: sequelize_more // !end
 
 // !code: sequelize_exports // !end
-module.exports = moduleExports
+module.exports = moduleExports;
 
 // !code: sequelize_funcs // !end
 // !code: sequelize_end // !end
