@@ -28,16 +28,8 @@ module.exports = function (options = {}) {
     // getItems always returns an array to simplify your processing.
     const records = getItems(context);
 
-    if (context.countView) {
-      await context.app
-        .service("shops")
-        .getModel()
-        .update(
-          {
-            views: records.views + 1,
-          },
-          { where: { id: records.id } }
-        );
+    if (context.params.query.slug) {
+      context.countView = true;
     }
 
     // Place the modified records back in the context.

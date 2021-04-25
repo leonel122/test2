@@ -18,6 +18,7 @@ const updateAlgolia = require("./hooks/update-algolia");
 const moment = require("moment");
 const asingSlug = require("./hooks/asing-slug");
 const countViews = require("./hooks/count-views");
+const querySlug = require("./hooks/query-slug");
 // !end
 
 // !code: used
@@ -97,7 +98,13 @@ let moduleExports = {
   before: {
     // !code: before
     all: [softDelete2()],
-    find: [iff(isProvider("external"), /* filterOwnerSHop(), */ searchShops())],
+    find: [
+      iff(
+        isProvider("external"),
+        /* filterOwnerSHop(), */ searchShops(),
+        querySlug()
+      ),
+    ],
     get: [iff(isProvider("external"), /* filterOwnerSHop(), */ searchShops())],
     create: [proccessShopBeforeCreate()],
     update: [disallow("external")],
@@ -109,8 +116,8 @@ let moduleExports = {
   after: {
     // !code: after
     all: [softDelete2()],
-    find: [fastJoin(JoinRequests)],
-    get: [fastJoin(JoinRequests), iff(isProvider("external"), countViews())],
+    find: [fastJoin(JoinRequests), countViews()],
+    get: [fastJoin(JoinRequests)],
     create: [createSchedule(), createShippingCost(), asingSlug()],
     update: [],
     patch: [asingSlug(), updateAlgolia()],
