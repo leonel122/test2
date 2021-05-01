@@ -45,49 +45,48 @@ const JoinRequests = {
       let dayWeek = moment(date).day();
 
       // console.log(dayWeek, "dayWeek");
-      console.log(records.id, "-----------------");
-      const schedule = await context.app
-        .service("schedule")
-        .find({
-          query: {
-            $select: ["start_hour", "id", "shop_id", "day"],
-            shop_id: records.id,
-            day: `${dayWeek}`,
-          },
-          paginate: false,
-        })
-        .then((it) => it[0]);
+      // const schedule = await context.app
+      //   .service("schedule")
+      //   .find({
+      //     query: {
+      //       $select: ["start_hour", "id", "shop_id", "day"],
+      //       shop_id: records.id,
+      //       day: `${dayWeek}`,
+      //     },
+      //     paginate: false,
+      //   })
+      //   .then((it) => it[0]);
 
-      console.log(schedule);
+      // console.log(schedule);
 
-      const currentHour = moment().utcOffset(-5).format("YYYY-MM-DD HH:mm:ss");
-      const start_hour = moment(
-        `${moment(currentHour).format("YYYY-MM-DD")} ${schedule.start_hour}`
-      ).format("YYYY-MM-DD HH:mm:ss");
+      // const currentHour = moment().utcOffset(-5).format("YYYY-MM-DD HH:mm:ss");
+      // const start_hour = moment(
+      //   `${moment(currentHour).format("YYYY-MM-DD")} ${schedule.start_hour}`
+      // ).format("YYYY-MM-DD HH:mm:ss");
 
-      if (
-        records.current_status == "close" &&
-        moment(start_hour).isBefore(currentHour)
-      ) {
-        dayWeek = dayWeek == 6 ? 0 : dayWeek + 1;
-      }
+      // if (
+      //   records.current_status == "close" &&
+      //   moment(start_hour).isBefore(currentHour)
+      // ) {
+      //   dayWeek = dayWeek == 6 ? 0 : dayWeek + 1;
+      // }
 
-      [records.category, records.open] = await Promise.all([
+      [records.category /* records.open */] = await Promise.all([
         context.app
           .service("categories")
           .find({ query: { id: records.category_id }, paginate: false })
           .then((it) => it[0]),
-        context.app
-          .service("schedule")
-          .find({
-            query: {
-              $select: ["start_hour", "id", "shop_id", "day", "status"],
-              shop_id: records.id,
-              day: `${dayWeek}`,
-            },
-            paginate: false,
-          })
-          .then((it) => it[0]),
+        // context.app
+        //   .service("schedule")
+        //   .find({
+        //     query: {
+        //       $select: ["start_hour", "id", "shop_id", "day", "status"],
+        //       shop_id: records.id,
+        //       day: `${dayWeek}`,
+        //     },
+        //     paginate: false,
+        //   })
+        //   .then((it) => it[0]),
       ]);
     },
   },
@@ -108,7 +107,9 @@ let moduleExports = {
     get: [iff(isProvider("external"), /* filterOwnerSHop(), */ searchShops())],
     create: [proccessShopBeforeCreate()],
     update: [disallow("external")],
-    patch: [restrictActivateShop()],
+    patch: [
+      /* restrictActivateShop() */
+    ],
     remove: [],
     // !end
   },
@@ -120,7 +121,7 @@ let moduleExports = {
     get: [fastJoin(JoinRequests)],
     create: [createSchedule(), createShippingCost(), asingSlug()],
     update: [],
-    patch: [asingSlug(), updateAlgolia()],
+    patch: [asingSlug() /* , updateAlgolia() */],
     remove: [],
     // !end
   },
