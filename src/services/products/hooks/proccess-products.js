@@ -33,6 +33,8 @@ module.exports = function (options = {}) {
     if (!records.name)
       throw new NotAcceptable("Debes enviar el nombre del producto");
 
+    records.status = "active";
+
     records.category_id = user.shop.category.id;
     // Place the modified records back in the context.
     replaceItems(context, records);
