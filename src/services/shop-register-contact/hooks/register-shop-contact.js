@@ -73,6 +73,10 @@ module.exports = function (options = {}) {
       address: records.address,
       nit: records.nitRut,
       full_name: `${records.first_name} ${records.last_name}`,
+      whatsapp: user.phone,
+      person_type: "natural",
+      document_type: "CC",
+      schedule_description: "Lun - Dom : 8am - 8pm",
     });
 
     await context.app.service("notifications").create({

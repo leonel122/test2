@@ -38,8 +38,6 @@ module.exports = function (options = {}) {
       records.shop_id = shop.id;
     }
 
-    records.status = "inactive";
-
     records.category =
       user.role == "admin" ? records.category_id : user.shop.category.id;
 

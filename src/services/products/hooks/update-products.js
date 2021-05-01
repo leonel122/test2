@@ -44,20 +44,20 @@ module.exports = function (options = {}) {
       throw new NotAcceptable("Producto no encontrado.");
     }
 
-    if (records.status == "active") {
-      if (!product.image)
-        throw new NotAcceptable(
-          "Para activar un producto debe tener una imagen"
-        );
-      if (!product.quantity)
-        throw new NotAcceptable(
-          "Para activar un producto debe tener una cantidad"
-        );
-      if (!product.description)
-        throw new NotAcceptable(
-          "Para activar un producto debe tener una descripción."
-        );
-    }
+    // if (records.status == "active") {
+    //   if (!product.image)
+    //     throw new NotAcceptable(
+    //       "Para activar un producto debe tener una imagen"
+    //     );
+    //   if (!product.quantity)
+    //     throw new NotAcceptable(
+    //       "Para activar un producto debe tener una cantidad"
+    //     );
+    //   if (!product.description)
+    //     throw new NotAcceptable(
+    //       "Para activar un producto debe tener una descripción."
+    //     );
+    // }
 
     // Place the modified records back in the context.
     replaceItems(context, records);
