@@ -61,7 +61,8 @@ module.exports = function (options = {}) {
       password: records.password,
       email: records.email,
       status: "active",
-      delivery_free:1
+      delivery_free: 1,
+      role: "user",
     });
 
     const shop = await context.app.service("shops").create({
