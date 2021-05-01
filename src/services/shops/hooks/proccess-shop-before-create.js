@@ -28,7 +28,7 @@ module.exports = function (options = {}) {
     // getItems always returns an array to simplify your processing.
     const records = getItems(context);
 
-    records.status = "Activada";
+    records.status = "Activa";
     records.current_status = "close";
     records.user_id = records.user_id ? records.user_id : user.id;
 
