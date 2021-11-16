@@ -44,7 +44,7 @@
     "@feathersjs/socketio": "^3.2.2",
     "ajv": "5.5.2",
     "algoliasearch": "^3.33.0",
-    "aws-sdk": "^2.739.0",
+    "aws-sdk": "^2.814.0",
     "compression": "^1.7.3",
     "cors": "^2.8.4",
     "cross-env": "^5.2.0",
