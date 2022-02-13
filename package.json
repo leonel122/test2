@@ -42,7 +42,7 @@
     "@feathersjs/express": "^1.2.3",
     "@feathersjs/feathers": "^3.3.1",
     "@feathersjs/socketio": "^3.2.2",
-    "ajv": "5.5.2",
+    "ajv": "6.12.3",
     "algoliasearch": "^3.33.0",
     "aws-sdk": "^2.739.0",
     "compression": "^1.7.3",
